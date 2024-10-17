@@ -1,9 +1,11 @@
 import { RootState } from "@/app/store";
-import { Button } from "@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "@/app/features/auth/authSlice";
 import { toast } from "react-toastify";
+
+// ui
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const isAuthenticated = useSelector(

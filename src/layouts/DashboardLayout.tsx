@@ -1,8 +1,10 @@
 import { RootState } from "@/app/store";
-import DashboardHeader from "@/components/layouts/Dashboard/DashboardHeader";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
+
+// ui
+import DashboardHeader from "@/components/layouts/Dashboard/DashboardHeader";
 
 const DashboardLayout = () => {
   const isAuthenticated = useSelector(

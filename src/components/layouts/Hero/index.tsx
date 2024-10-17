@@ -1,8 +1,10 @@
 import { RootState } from "@/app/store";
 import HeroImg from "@/assets/hero.svg";
-import { Button } from "@/components/ui/button";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+// ui
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   const isAuthenticated = useSelector(

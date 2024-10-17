@@ -1,11 +1,12 @@
 import { RootState } from "@/app/store";
-import { Button } from "@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "@/app/features/auth/authSlice";
 import { toast } from "react-toastify";
 import { useGetProfileQuery } from "@/app/services/auth";
-// import Profile from "../Profile";
+
+// ui
+import { Button } from "@/components/ui/button";
 import ProfileData from "@/pages/ProfileData";
 
 const DashboardHeader = () => {
