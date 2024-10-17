@@ -24,3 +24,8 @@ export const createSchema = z.object({
   price: z.string(),
   status: z.boolean(),
 });
+
+export const profileSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+});
