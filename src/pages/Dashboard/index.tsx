@@ -1,4 +1,10 @@
+import DataTable from "@/components/layouts/Dashboard/DataTable";
+
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <DataTable />
+    </div>
+  );
 };
 export default Dashboard;
