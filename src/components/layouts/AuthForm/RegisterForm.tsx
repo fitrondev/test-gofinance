@@ -47,6 +47,9 @@ const RegisterForm = () => {
       .then(() => {
         toast.success("Registered successfully");
         navigate("/auth/login");
+      })
+      .catch((error) => {
+        toast.error(error.data.detail);
       });
   }
   return (
