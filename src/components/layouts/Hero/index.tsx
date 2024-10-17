@@ -1,8 +1,14 @@
+import { RootState } from "@/app/store";
 import HeroImg from "@/assets/hero.svg";
 import { Button } from "@/components/ui/button";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
+
   return (
     <section className="h-[calc(100vh-64px)] flex items-center justify-center">
       <div className="container lg:h-[500px] grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -18,9 +24,15 @@ const Hero = () => {
           </p>
 
           <div>
-            <Button asChild>
-              <Link to="/auth/register">Get Started</Link>
-            </Button>
+            {isAuthenticated ? (
+              <Button asChild>
+                <Link to="/dashboard">Go to Dashboard</Link>
+              </Button>
+            ) : (
+              <Button asChild>
+                <Link to="/auth/register">Get Started</Link>
+              </Button>
+            )}
           </div>
         </div>
 
