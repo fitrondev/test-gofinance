@@ -1,4 +1,5 @@
 import App from "@/App";
+import CreateData from "@/components/layouts/Dashboard/CreateData";
 import AuthLayout from "@/layouts/AuthLayout";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import RootLayout from "@/layouts/RootLayout";
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/create",
+        element: <CreateData />,
       },
     ],
   },

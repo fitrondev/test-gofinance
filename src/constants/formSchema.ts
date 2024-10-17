@@ -11,3 +11,16 @@ export const registerSchema = z.object({
   password: z.string().min(6),
   avatar: z.string().url(),
 });
+
+export const editSchema = z.object({
+  item: z.string(),
+  price: z.string(),
+  date: z.string(),
+  status: z.boolean(),
+});
+
+export const createSchema = z.object({
+  item: z.string(),
+  price: z.string(),
+  status: z.boolean(),
+});
