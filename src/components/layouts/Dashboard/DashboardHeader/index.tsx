@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { logout } from "@/app/features/auth/authSlice";
 import { toast } from "react-toastify";
 import { useGetProfileQuery } from "@/app/services/auth";
-import Profile from "../Profile";
+// import Profile from "../Profile";
+import ProfileData from "@/pages/ProfileData";
 
 const DashboardHeader = () => {
   const { data: user, isLoading } = useGetProfileQuery({});
@@ -22,6 +23,7 @@ const DashboardHeader = () => {
     toast.success("Logged out successfully");
     navigate("/auth/login");
   };
+
   return (
     <header className="bg-primary">
       <div className="container h-16 flex items-center justify-between text-white">
@@ -32,10 +34,7 @@ const DashboardHeader = () => {
         <div>
           {isAuthenticated && user && (
             <div className="flex items-center gap-4">
-              <Link to={"/profile"} className="inline-flex items-center gap-2">
-                <Profile source={user.avatar} />
-                <p className="text-lg font-semibold">{user.name}</p>
-              </Link>
+              <ProfileData user={user} />
 
               <Button variant={"destructive"} onClick={logoutBtn}>
                 Logout
