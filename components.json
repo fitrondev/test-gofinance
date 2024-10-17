@@ -17,6 +17,7 @@
     "lib": "@/lib",
     "hooks": "@/hooks",
     "pages": "@/pages",
-    "assets": "@/assets"
+    "assets": "@/assets",
+    "app": "@/app"
   }
 }

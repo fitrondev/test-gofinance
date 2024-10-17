@@ -5,8 +5,17 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
 
+import { store } from "@/app/store";
+import { Provider } from "react-redux";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </Provider>
   </StrictMode>
 );

@@ -2,7 +2,7 @@ import { loginSchema } from "@/constants/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // ui
 import {
@@ -23,8 +23,17 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useAuthLoginMutation } from "@/app/services/auth";
+import { useDispatch } from "react-redux";
+import { login } from "@/app/features/auth/authSlice";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
+  const [authLogin, { isLoading }] = useAuthLoginMutation();
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -34,7 +43,16 @@ const LoginForm = () => {
   });
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
-    console.log(values);
+    authLogin(values)
+      .unwrap()
+      .then((data) => {
+        dispatch(login(data.access_token));
+        toast.success("Logged in successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error(error.data.message);
+      });
   }
   return (
     <Card>
@@ -83,7 +101,7 @@ const LoginForm = () => {
               )}
             />
 
-            <Button type="submit" className="w-full">
+            <Button type="submit" disabled={isLoading} className="w-full">
               Login
             </Button>
           </form>
