@@ -1,9 +1,10 @@
 import { RootState } from "@/app/store";
+import DashboardHeader from "@/components/layouts/Dashboard/DashboardHeader";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 
-const AuthLayout = () => {
+const DashboardLayout = () => {
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
@@ -11,15 +12,16 @@ const AuthLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (!isAuthenticated) {
       navigate("/");
     }
   }, [isAuthenticated, navigate]);
 
   return (
     <>
+      <DashboardHeader />
       <Outlet />
     </>
   );
 };
-export default AuthLayout;
+export default DashboardLayout;
