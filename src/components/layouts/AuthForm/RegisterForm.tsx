@@ -2,7 +2,7 @@ import { registerSchema } from "@/constants/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // ui
 import {
@@ -23,19 +23,31 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useAuthRegisterMutation } from "@/app/services/auth";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
+  const [authRegister, { isLoading }] = useAuthRegisterMutation();
+
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
+      avatar: "https://picsum.photos/800",
     },
   });
 
   function onSubmit(values: z.infer<typeof registerSchema>) {
-    console.log(values);
+    authRegister(values)
+      .unwrap()
+      .then(() => {
+        toast.success("Registered successfully");
+        navigate("/auth/login");
+      });
   }
   return (
     <Card>
@@ -50,14 +62,14 @@ const RegisterForm = () => {
             className="w-[300px] space-y-4">
             <FormField
               control={form.control}
-              name="username"
+              name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input
-                      type="username"
-                      placeholder="Input Your Email"
+                      type="text"
+                      placeholder="Input Your Name"
                       {...field}
                     />
                   </FormControl>
@@ -102,7 +114,7 @@ const RegisterForm = () => {
               )}
             />
 
-            <Button type="submit" className="w-full">
+            <Button type="submit" disabled={isLoading} className="w-full">
               Register
             </Button>
           </form>
@@ -111,7 +123,7 @@ const RegisterForm = () => {
       <CardFooter>
         <p>Already have an account?</p>
         <Link
-          to="/auth/register"
+          to="/auth/login"
           className="pl-1 text-primary hover:underline transition-all">
           Login
         </Link>
