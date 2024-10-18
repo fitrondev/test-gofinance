@@ -61,7 +61,7 @@
 
 5. **Buka Aplikasi**
 
-   Buka browser dan akses `http://localhost:3000`.
+   Buka browser dan akses `http://localhost:5173`.
 
 ## Catatan Tambahan untuk Reviewer
 
