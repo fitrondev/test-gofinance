@@ -1,50 +1,79 @@
-# React + TypeScript + Vite
+# Web Application with Fake REST API and User Interface
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Nama: Muh. Fitron Ansori
 
-Currently, two official plugins are available:
+## Fitur
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Slicing UI dari Figma**: Mengimplementasikan desain berdasarkan Figma, dan untuk halaman yang belum ada, dibuat dengan kreativitas sendiri.
+2. **Desain Responsif**: Aplikasi mendukung berbagai ukuran layar.
+3. **Registrasi Pengguna**: Pengguna bisa mendaftar akun baru.
+4. **Login Pengguna**: Pengguna bisa masuk ke akun terdaftar.
+5. **Akses Profil**: Pengguna dapat melihat profil setelah login.
+6. **CRUD Transaksi**: Pengguna dapat membuat, membaca, mengubah, dan menghapus transaksi setelah login.
+7. **Keamanan Akses**: Pengguna tidak dapat mengakses profil pengguna lain.
 
-## Expanding the ESLint configuration
+## Teknologi yang Digunakan
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React.js**: Library untuk membangun antarmuka pengguna.
+- **React Router DOM**: Untuk mengelola navigasi.
+- **Redux Toolkit**: Untuk manajemen state global.
+- **RTK Query**: Untuk fetching dan caching data asinkron.
+- **Shadcn UI**: Komponen UI untuk antarmuka yang konsisten.
+- **Fakeapi Platzi**: Menggunakan Plaztzi sebagai API palsu.
 
-- Configure the top-level `parserOptions` property like this:
+## Demo Aplikasi
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+[Aplikasi](https://ansoridev-gofinance.vercel.app/)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Panduan Instalasi dan Menjalankan Aplikasi Secara Lokal
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Prasyarat
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Node.js versi 14.x atau lebih baru
+- npm atau yarn
+
+### Langkah-langkah
+
+1. **Clone Repository**
+
+   ```bash
+   git clone [link-git-repo]
+
+   ```
+
+2. **Pindah ke Direktori**
+
+   ```bash
+   cd [nama-folder]
+   ```
+
+3. **Install Dependencies**
+
+   ```bash
+    npm install
+   ```
+
+4. **Menjalankan Aplikasi**
+
+   ```bash
+   npm start
+   ```
+
+5. **Buka Aplikasi**
+
+   Buka browser dan akses `http://localhost:3000`.
+
+## Catatan Tambahan untuk Reviewer
+
+- State Management: Aplikasi ini menggunakan Redux Toolkit dan RTK Query untuk manajemen state dan fetching data, yang membuat pengelolaan state lebih efisien dan terstruktur.
+
+- Routing: Implementasi routing menggunakan React Router DOM untuk navigasi antar halaman tanpa reload.
+
+- UI Components: Menggunakan Shadcn UI untuk memastikan konsistensi dan responsivitas antarmuka pengguna.
+
+## Kontak
+
+Jika Anda memiliki pertanyaan atau membutuhkan informasi lebih lanjut, silakan hubungi:
+
+- Email: <fitronansori7@gmail.com>
+- Telepon: 085738224566
